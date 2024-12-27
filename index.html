@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .video-slider {
+      width: 90%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main video display */
+    .main-video {
+      width: 100%;
+      height: 450px;
+      background: #000;
+    }
+
+    .main-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Thumbnails container */
+    .thumbnails {
+      display: flex;
+      overflow-x: auto;
+      padding: 10px;
+      background: #222;
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: #555 #222; /* Firefox */
+    }
+
+    /* Scrollbar for Chrome, Edge, Safari */
+    .thumbnails::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .thumbnails::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 8px;
+    }
+
+    .thumbnails::-webkit-scrollbar-track {
+      background: #222;
+    }
+
+    /* Thumbnail styles */
+    .thumbnail {
+      flex-shrink: 0;
+      width: 120px;
+      height: 80px;
+      margin-right: 10px;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.1);
+      border-color: #f8b500;
+    }
+
+    .thumbnail video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<div class="video-slider">
+  <!-- Main Video Display -->
+  <div class="main-video">
+    <video id="mainVideo" controls>
+      <source src="video/video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Thumbnails Section -->
+  <div class="thumbnails">
+    <div class="thumbnail" data-video="video/video1.mp4">
+      <video muted>
+        <source src="video/video1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video2.mp4">
+      <video muted>
+        <source src="video/video2.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video3.mp4">
+      <video muted>
+        <source src="video/video3.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video4.mp4">
+      <video muted>
+        <source src="video/video4.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video5.mp4">
+      <video muted>
+        <source src="video/video5.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video6.mp4">
+      <video muted>
+        <source src="video/video6.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video7.mp4">
+      <video muted>
+        <source src="video/video7.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video8.mp4">
+      <video muted>
+        <source src="video/video8.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="thumbnail" data-video="video/video9.mp4">
+      <video muted>
+        <source src="video/video9.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+
+<script>
+  // JavaScript to handle thumbnail clicks
+  const mainVideo = document.getElementById('mainVideo');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+  thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      const videoSrc = thumbnail.getAttribute('data-video');
+      mainVideo.src = videoSrc;  // Change the video source
+      mainVideo.play();  // Play the new video
+    });
+  });
+</script>
+
+</body>
+</html>
